@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wap {
+            display: flex;
+            height: 500px;
+        }
+
+        .wap>div {
+            display: inline-block;
+            margin: auto;
+        }
+    </style>
+</head>
+<div class="wap">
+    <div>
+        名字: &nbsp;&nbsp;<input name="name" id="11"><br>
+        密码：<input name="password" id="22"><br>
+        <button onclick="send()" id="33">发送</button>
+    </div>
+</div>
+
+<script>
+    function send() {
+        let name = document.getElementById('11').value,
+            pass = document.getElementById('22').value;
+        console.log(name)
+        console.log(pass)
+    }
+</script>
+
+</body>
+
+</html>
