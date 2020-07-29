@@ -28,9 +28,19 @@
 <script>
     function send() {
         let name = document.getElementById('11').value,
-            pass = document.getElementById('22').value;
-        console.log(name)
-        console.log(pass)
+            pass = document.getElementById('22').value,
+            xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                console.log(xhr.responseText)
+            }
+        }
+        xhr.open("post", "/login", true);
+        let data = {
+            name: name,
+            pass: pass,
+        }
+        xhr.send(JSON.stringify(data));
     }
 </script>
 
