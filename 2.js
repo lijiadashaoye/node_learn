@@ -120,7 +120,6 @@
 // 构建本地服务器，并解析请求参数
 // var http = require("http");
 // var url = require("url");  // 解析url所用模块
-
 // http.createServer(function (request, response) {
 //     response.writeHead(200, {
 //         "Content-Type": "text/plain"
@@ -134,6 +133,30 @@
 //     // console.log(global) // node 中的全局对象
 //     response.end();
 // }).listen(8888);
+
+// 构建本地服务器，并将node用作客户端，去请求另外的接口数据
+// let http = require('http');
+// http.createServer((req, res) => {
+//     if (req.url != '/favicon.ico') {
+//         let url = `http://fund.10jqka.com.cn/web/fund/stockAndBond${req.url}`
+//         http.get(url,
+//             (req, r) => {
+//                 var datas = '';
+//                 req.on('data', function (data) {
+//                     datas += data;
+//                 });
+//                 req.on('end', function () {
+//                     res.setHeader('Content-Type', 'text/plain; charset=utf-8')
+//                     res.setHeader('Access-Control-Allow-Origin', '*')
+//                     res.end(datas)
+//                 });
+//             })
+//     } else {
+//         res.end('')
+//     }
+
+// }).listen(6666)
+
 
 // 接收 post 数据
 // var http = require("http");
