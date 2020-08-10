@@ -15,11 +15,11 @@
 // console.log(bin); // => <Buffer 68 65 6c 6c 6f>
 // console.log(dup); // => <Buffer 48 65 65 6c 6f>
 
-// // 流式读写文件，适用于大文件
+// 流式读写文件，适用于大文件
 // let fs = require('fs');
-// // let read = fs.createReadStream('./t.txt');
-// // let write = fs.createWriteStream('./out.rar');
-// // read.pipe(write)
+// let read = fs.createReadStream('./t.txt');
+// let write = fs.createWriteStream('./out.rar');
+// read.pipe(write)
 
 // 异步读取小文件
 // let fs = require('fs');
@@ -92,10 +92,10 @@
 // })
 
 // let zips = require('zlib');  // 引入node执行压缩相关操作的模块
-// // 执行压缩
-// // fs.createReadStream('./t.txt')
-// //     .pipe(zips.createGzip())
-// //     .pipe(fs.createWriteStream('./out.zip'))
+// 执行压缩
+// fs.createReadStream('./t.txt')
+//     .pipe(zips.createGzip())
+//     .pipe(fs.createWriteStream('./out.zip'))
 
 // // 执行解压缩
 // let zips = require('zlib'); 
@@ -136,11 +136,9 @@
 //         "Content-Type": "text/plain"
 //     });
 //     response.write("Hello World");
-
 //     let path = url.parse(request.url);
 //     console.log(path.pathname) // 文件路径，用来匹配路由
 //     console.log(path.query) // 查询参数，无参数时为 null
-
 //     // console.log(global) // node 中的全局对象
 //     response.end();
 // }).listen(8888);
@@ -165,14 +163,11 @@
 //     } else {
 //         res.end('')
 //     }
-
 // }).listen(6666)
-
 
 // 接收 post 数据
 // var http = require("http");
 // var querystring = require('querystring');
-
 // http.createServer((req, res) => {
 //     var body = "";  // 暂存请求体的信息
 //     req.on('data', function (chunk) {
@@ -184,6 +179,28 @@
 //     })
 //     res.end()
 // }).listen(6546)
+
+
+// 构建服务器，读取文件并将文件内容返回
+// let fs = require('fs'),
+//     http = require('http');
+// http.createServer((req, res) => {
+//     let path = req.url,
+//         wenjian;
+//     if (path != '/favicon.ico') {
+//         fs.readFile('json.json', (err, files) => {
+//             wenjian = JSON.parse(files.toString());
+//             let str = wenjian[path.substr(1)];
+//             res.writeHead(200, {
+//                 "Content-Type": "text/plain"
+//             });
+//             res.write(str)
+//             res.end()
+//         })
+//     } else {
+//         res.end()
+//     }
+// }).listen(3423)
 
 // body-parser - node.js 中间件，用于处理 JSON, Raw, Text 和 URL 编码的数据。
 // cookie-parser - 这就是一个解析Cookie的工具。通过req.cookies可以取到传过来的cookie，并把它们转成对象。
