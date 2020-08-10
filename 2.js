@@ -22,6 +22,7 @@
 // // read.pipe(write)
 
 // 异步读取小文件
+// let fs = require('fs');
 // fs.readFile('t.txt', function (err, data) {
 //     if (err) {
 //         return console.error(err);
@@ -30,15 +31,18 @@
 // });
 
 // 读取下级目录的文件
+// let fs = require('fs');
 // fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
 //     console.log( data );
 // });
 
 // 同步读取文件
+// let fs = require('fs');
 // var data = fs.readFileSync('t.txt');
 // console.log("同步读取: " + data.toString());
 
 // 以追加内容的方式往文件内写入内容，适用于小文件
+// let fs = require('fs');
 // fs.writeFile('tt.txt', '我是通 过fs.writeFile 写入文件的内容', {
 //     flag: 'a'
 // }, err => {})
@@ -46,41 +50,45 @@
 // 异步删除文件
 // fs.unlink('tt.txt', err => {})
 
-// let fs = require('fs');
 // 递归创建文件夹，并在文件夹内创建文件
+// let fs = require('fs');
 // fs.mkdir('tt/tt1/tt2', {
 //     recursive: true
 // }, err => {
 //     fs.writeFile('tt/tt1/tt2/ll.txt', 'asdfasdf', e => {
 //         fs.readdir('tt', (err, files) => {
-//             console.log(files)
+//             console.log(files) // 返回值：[ 'tt1' ]
 //         })
 //     })
 // })
 
 // 读取文件夹
+// let fs = require('fs');
 // fs.readdir("tt/tt1", function (err, files) {
 //     if (err) {
 //         return console.error(err);
 //     }
 //     files.forEach(function (file) {
-//         console.log(file);
+//         console.log(file); // 返回值 tt2
 //     });
 // });
 
 // 删除文件夹
+// let fs = require('fs');
 // fs.rmdir('tt', {
 //     recursive: true // 递归删除，当文件夹不为空时会删除失败，需要加上
 // }, e => {})
 
 // 监听文件内容的变动
+// let fs = require('fs');
 // fs.watchFile('t.txt', e => {
 //     console.log(e)
 // })
 
 // 检测给定的路径是否存在。
+// let fs = require('fs');
 // fs.exists('tt', e => {
-//     console.log(e)
+//     console.log(e)  // true
 // })
 
 // let zips = require('zlib');  // 引入node执行压缩相关操作的模块
@@ -90,6 +98,7 @@
 // //     .pipe(fs.createWriteStream('./out.zip'))
 
 // // 执行解压缩
+// let zips = require('zlib'); 
 // fs.createReadStream('./out.zip')
 //     .pipe(zips.createGunzip())
 //     .pipe(fs.createWriteStream('./out22.txt'))
@@ -97,10 +106,10 @@
 // __filename 表示当前正在执行的脚本的文件名。
 // 它将输出文件所在位置的绝对路径，且和命令行参数所指定的文件名不一定相同。 
 // 如果在模块中，返回的值是模块文件的路径。
-// console.log(__filename)
+// console.log(__filename)  // /Users/lipeng/Desktop/demos/node_learn/2.js
 
 // __dirname 表示当前执行脚本所在的目录。
-// console.log(__dirname)
+// console.log(__dirname)  // /Users/lipeng/Desktop/demos/node_learn
 
 // process 是一个全局变量，即 global 对象的属性。
 // 它用于描述当前Node.js 进程状态的对象，提供了一个与操作系统的简单接口
@@ -114,7 +123,9 @@
 //     process.nextTick(callback);
 // }
 // process.cwd()：返回当前进程的工作目录，C:\Users\EDZ\Desktop\LP\nodeJS
-// process.argv：argv[0] 固定等于 NodeJS 执行程序的绝对路径，argv[1] 固定等于主模块的绝对路径
+// process.argv：
+//    argv[0] 固定等于 NodeJS 执行程序的绝对路径，
+//    argv[1] 固定等于主模块的绝对路径
 
 
 // 构建本地服务器，并解析请求参数
@@ -134,7 +145,7 @@
 //     response.end();
 // }).listen(8888);
 
-// 构建本地服务器，并将node用作客户端，去请求另外的接口数据
+// 构建本地服务器，并将node用作客户端，去请求另外的接口数据，可以解决浏览器的跨域限制
 // let http = require('http');
 // http.createServer((req, res) => {
 //     if (req.url != '/favicon.ico') {
@@ -165,7 +176,7 @@
 // http.createServer((req, res) => {
 //     var body = "";  // 暂存请求体的信息
 //     req.on('data', function (chunk) {
-//         body += chunk;  // 每当接受到请求体的数据，就累加到post变量中
+//         body += chunk;  // 每当接受到请求体的数据（二进制数据），就累加到post变量中
 //     });
 //     req.on('end', () => {
 //         body = querystring.parse(body);
