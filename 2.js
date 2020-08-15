@@ -91,6 +91,17 @@
 //     console.log(e)  // true
 // })
 
+// 给文件改名，也可以同时指定改名后文件的保存地址
+// let fs = require('fs');
+// fs.rename('./r.html', 'tt/renamed.html', () => {
+//     console.log('改了名字')
+// })
+
+// 获取文件的拓展名
+let path = require('path');
+console.log(path.extname('tt/renamed.html'))
+
+
 // let zips = require('zlib');  // 引入node执行压缩相关操作的模块
 // 执行压缩
 // fs.createReadStream('./t.txt')
@@ -171,7 +182,7 @@
 // http.createServer((req, res) => {
 //     var body = "";  // 暂存请求体的信息
 //     req.on('data', function (chunk) {
-//         body += chunk;  // 每当接受到请求体的数据（二进制数据），就累加到post变量中
+//         body += chunk;  // 每当接受到请求体的数据（二进制数据），就累加到 body 变量中
 //     });
 //     req.on('end', () => {
 //         body = querystring.parse(body);
@@ -183,10 +194,27 @@
 
 // 构建服务器，读取文件并将文件内容返回
 // let fs = require('fs'),
-//     http = require('http');
+//     http = require('http'),
+//     Url = require('url');
 // http.createServer((req, res) => {
-//     let path = req.url,
+//     let path = Url.parse(req.url).path, // 分析url的模块
 //         wenjian;
+//     // http: //localhost:3423/asdf/asdfs/#/fasdf?name=33
+//     console.log(Url.parse(req.url))
+//     // Url {
+//     //     protocol: null,
+//     //     slashes: null,
+//     //     auth: null,
+//     //     host: null,
+//     //     port: null,
+//     //     hostname: null,
+//     //     hash: null,
+//     //     search: null,
+//     //     query: null,
+//     //     pathname: '/asdf/asdfs',
+//     //     path: '/asdf/asdfs',
+//     //     href: '/asdf/asdfs'
+//     //   }
 //     if (path != '/favicon.ico') {
 //         fs.readFile('json.json', (err, files) => {
 //             wenjian = JSON.parse(files.toString());
