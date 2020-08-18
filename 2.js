@@ -16,7 +16,7 @@
 // console.log(dup); // => <Buffer 48 65 65 6c 6f>
 
 // // 流式读写文件，适用于大文件
-// let fs = require('fs');
+let fs = require('fs');
 // // let read = fs.createReadStream('./t.txt');
 // // let write = fs.createWriteStream('./out.rar');
 // // read.pipe(write)
@@ -30,9 +30,9 @@
 // });
 
 // 读取下级目录的文件
-// fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-//     console.log( data );
-// });
+fs.readFile(__dirname + "/" + "package.json", 'utf8', function (err, data) {
+    console.log(JSON.parse(data)['name']);
+});
 
 // 同步读取文件
 // var data = fs.readFileSync('t.txt');
