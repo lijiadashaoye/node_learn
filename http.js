@@ -23,9 +23,6 @@ let jsonParser = app.use(bodyParser.json());
 // 静态文件，默认读取 index.html
 app.use('/static', express.static(__dirname + '/static'));
 
-
-
-
 app.post('/login', jsonParser, function (req, res) {
     res.send('POST request to homepage')
     // if (!req.body) return res.sendStatus(400);
