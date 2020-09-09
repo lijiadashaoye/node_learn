@@ -99,9 +99,8 @@ fs.readFile(__dirname + "/" + "package.json", 'utf8', function (err, data) {
 // })
 
 // 获取文件的拓展名
-let path = require('path');
-console.log(path.extname('tt/renamed.html'))
-
+// let path = require('path');
+// console.log(path.extname('tt/renamed.html'))
 
 // let zips = require('zlib');  // 引入node执行压缩相关操作的模块
 // 执行压缩
