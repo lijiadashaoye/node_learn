@@ -261,3 +261,13 @@ fs.readFile(__dirname + "/" + "package.json", 'utf8', function (err, data) {
 //         age: 9
 //     })
 // }, 2000)
+
+// 使用 express 参数路由，并获取路由参数
+// let express = require('express'),
+//     app = express();
+// app.get('/:name/:id', (req, res) => {
+//     let params = req.params;
+//     console.log(params);
+//     res.send()
+// })
+// app.listen(6544)
