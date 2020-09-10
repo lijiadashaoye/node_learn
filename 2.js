@@ -246,10 +246,6 @@ fs.readFile(__dirname + "/" + "package.json", 'utf8', function (err, data) {
 // console.log(pack)
 // pack.two()
 
-// 文件扩展名的获取
-// let path = require('path');
-// console.log(path.extname('./1.js'))
-
 // node 的事件触发
 // var events = require('events');
 // var Emitter = new events.EventEmitter();
