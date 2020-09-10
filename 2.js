@@ -250,11 +250,12 @@ fs.readFile(__dirname + "/" + "package.json", 'utf8', function (err, data) {
 // var events = require('events');
 // var Emitter = new events.EventEmitter();
 
-// // on 函数用于绑定事件函数，emit 属性用于触发一个事件
+// // on 函数用于绑定事件函数
 // Emitter.on('ffff', (data) => {
 //     console.log(data)
 // })
 
+// emit 触发一个事件
 // setTimeout(() => {
 //     Emitter.emit('ffff', {
 //         age: 9
