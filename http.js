@@ -1,4 +1,5 @@
 let express = require('express');
+
 let app = express();
 let bodyParser = require('body-parser');
 // 使用路由
@@ -14,21 +15,21 @@ app.use(router)
 */
 // app.use(); 会拦截每一次的请求
 
-let jsonParser = app.use(bodyParser.json());
-// 解析 application/x-www-form-urlencoded
-// let urlencodedParser = app.use(bodyParser.urlencoded({
+//创建application/json解析
+app.use(bodyParser.json());
+
+//创建application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({
 //     extended: false
 // }));
 
 // 静态文件，默认读取 index.html
 app.use('/static', express.static(__dirname + '/static'));
 
-app.post('/login', jsonParser, function (req, res) {
-    res.send('POST request to homepage')
-    // if (!req.body) return res.sendStatus(400);
-    // console.log(req)
-    // res.sendStatus(200)
-    // .send('welcome, 名字：' + req.body.name + '密码：' + req.body.pass);
+app.post('/login', function (req, res) {
+    if (!req.body) return res.sendStatus(400);
+    console.log(req.ip)
+    res.send('名字：' + req.body.name + ' ,  密码：' + req.body.pass);
 })
 
 

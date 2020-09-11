@@ -15,6 +15,10 @@
             display: inline-block;
             margin: auto;
         }
+
+        #response {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <div class="wap">
@@ -22,6 +26,8 @@
         名字: &nbsp;&nbsp;<input name="name" id="11"><br>
         密码：<input name="password" id="22"><br>
         <button onclick="send()" id="33">发送</button>
+
+        <div id="response"></div>
     </div>
 </div>
 
@@ -32,10 +38,11 @@
             xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
             if (xhr.readyState == 4 && xhr.status == 200) {
-                console.log(xhr.responseText)
+                document.getElementById('response').innerHTML = xhr.responseText
             }
         }
         xhr.open("post", "/login", true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
         let data = {
             name: name,
             pass: pass,
