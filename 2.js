@@ -15,6 +15,8 @@
 // console.log(bin); // => <Buffer 68 65 6c 6c 6f>
 // console.log(dup); // => <Buffer 48 65 65 6c 6f>
 
+// // 流式读写文件，适用于大文件
+let fs = require('fs');
 // 流式读写文件，适用于大文件
 // let fs = require('fs');
 // let read = fs.createReadStream('./t.txt');
@@ -30,11 +32,10 @@
 //     console.log("异步读取: " + data.toString());
 // });
 
-// 读取下级目录的文件
-// let fs = require('fs');
-// fs.readFile( __dirname + "/" + "users.json", 'utf8', function (err, data) {
-//     console.log( data );
-// });
+// 读取同级目录的文件
+fs.readFile(__dirname + "/" + "package.json", 'utf8', function (err, data) {
+    console.log(JSON.parse(data)['name']);
+});
 
 // 同步读取文件
 // let fs = require('fs');
@@ -99,9 +100,8 @@
 // })
 
 // 获取文件的拓展名
-let path = require('path');
-console.log(path.extname('tt/renamed.html'))
-
+// let path = require('path');
+// console.log(path.extname('tt/renamed.html'))
 
 // let zips = require('zlib');  // 引入node执行压缩相关操作的模块
 // 执行压缩
@@ -247,25 +247,23 @@ console.log(path.extname('tt/renamed.html'))
 // console.log(pack)
 // pack.two()
 
-// 文件扩展名的获取
-// let path = require('path');
-// console.log(path.extname('./1.js'))
-
 // node 的事件触发
 // var events = require('events');
 // var Emitter = new events.EventEmitter();
 
-// // on 函数用于绑定事件函数，emit 属性用于触发一个事件
+// // on 函数用于绑定事件函数
 // Emitter.on('ffff', (data) => {
 //     console.log(data)
 // })
 
+// emit 触发一个事件
 // setTimeout(() => {
 //     Emitter.emit('ffff', {
 //         age: 9
 //     })
 // }, 2000)
 
+<<<<<<< HEAD
 var num = 0,
     time = null;
 var socket = new WebSocket("ws://localhost:5555");
@@ -281,3 +279,14 @@ socket.onopen = () => {
 socket.onmessage = (e) => {
     console.log(e.data);
 };
+=======
+// 使用 express 参数路由，并获取路由参数
+// let express = require('express'),
+//     app = express();
+// app.get('/:name/:id', (req, res) => {
+//     let params = req.params;
+//     console.log(params);
+//     res.send()
+// })
+// app.listen(6544)
+>>>>>>> 803735a5987ef88dd83d309f5a32d27e846e9088

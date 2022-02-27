@@ -1,4 +1,5 @@
 let express = require('express');
+
 let app = express();
 let bodyParser = require('body-parser');
 // 使用路由
@@ -14,9 +15,11 @@ app.use(router)
     */
     // app.use(); 会拦截每一次的请求
 
-let jsonParser = app.use(bodyParser.json());
-// 解析 application/x-www-form-urlencoded
-// let urlencodedParser = app.use(bodyParser.urlencoded({
+//创建application/json解析
+app.use(bodyParser.json());
+
+//创建application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({
 //     extended: false
 // }));
 
