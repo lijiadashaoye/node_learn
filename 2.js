@@ -51,6 +51,7 @@
 // fs.unlink('tt.txt', err => {})
 
 // 递归创建文件夹，并在文件夹内创建文件
+// fs.writeFile('文件路径'，'要写入的内容'，['编码']，'回调函数');
 // let fs = require('fs');
 // fs.mkdir('tt/tt1/tt2', {
 //     recursive: true
@@ -264,3 +265,19 @@ console.log(path.extname('tt/renamed.html'))
 //         age: 9
 //     })
 // }, 2000)
+
+var num = 0,
+    time = null;
+var socket = new WebSocket("ws://localhost:5555");
+socket.onopen = () => {
+    if (num < 100) {
+        time = setInterval(() => {
+            socket.send(num++);
+        }, 1000);
+    } else {
+        clearInterval(time);
+    }
+};
+socket.onmessage = (e) => {
+    console.log(e.data);
+};

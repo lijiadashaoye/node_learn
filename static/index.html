@@ -10,7 +10,7 @@
             display: flex;
             height: 500px;
         }
-
+        
         .wap>div {
             display: inline-block;
             margin: auto;
@@ -19,18 +19,59 @@
 </head>
 <div class="wap">
     <div>
-        名字: &nbsp;&nbsp;<input name="name" id="11"><br>
-        密码：<input name="password" id="22"><br>
+        名字: &nbsp;&nbsp;<input name="name" id="11"><br> 密码：
+        <input name="password" id="22"><br>
         <button onclick="send()" id="33">发送</button>
+    </div>
+    <div>
+        <button onclick="websocket()" id="44">测试 websocket</button>
+        <button onclick="close()" id="55">关闭 websocket</button>
+        <p id="text"></p>
     </div>
 </div>
 
 <script>
+    function websocket() {
+        let btn = document.getElementById('44');
+        let btn1 = document.getElementById('55');
+        let text = document.getElementById('text');
+        let num = 0,
+            socket = null,
+            time = null;
+
+        btn1.onclick = function() {
+            socket.close()
+        }
+        btn.onclick = function() {
+            socket = new WebSocket("ws://localhost:4444");
+            socket.onopen = () => {
+                console.log(num)
+                if (num < 100) {
+                    time = setInterval(() => {
+                        socket.send(num++);
+                    }, 1000);
+                } else {
+                    clearInterval(time);
+                }
+            };
+            socket.onmessage = (e) => {
+                // console.log(e);
+                text.innerHTML = e.data
+            };
+            socket.onclose = () => {
+                console.log('关闭了');
+                clearInterval(time);
+            };
+        }
+
+
+    }
+
     function send() {
         let name = document.getElementById('11').value,
             pass = document.getElementById('22').value,
             xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function () {
+        xhr.onreadystatechange = function() {
             if (xhr.readyState == 4 && xhr.status == 200) {
                 console.log(xhr.responseText)
             }
