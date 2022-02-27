@@ -33,7 +33,7 @@ let fs = require('fs');
 // });
 
 // 读取同级目录的文件
-fs.readFile(__dirname + "/" + "package.json", 'utf8', function (err, data) {
+fs.readFile(__dirname + "/" + "package.json", 'utf8', function(err, data) {
     console.log(JSON.parse(data)['name']);
 });
 
@@ -263,7 +263,6 @@ fs.readFile(__dirname + "/" + "package.json", 'utf8', function (err, data) {
 //     })
 // }, 2000)
 
-<<<<<<< HEAD
 var num = 0,
     time = null;
 var socket = new WebSocket("ws://localhost:5555");
@@ -279,7 +278,6 @@ socket.onopen = () => {
 socket.onmessage = (e) => {
     console.log(e.data);
 };
-=======
 // 使用 express 参数路由，并获取路由参数
 // let express = require('express'),
 //     app = express();
@@ -289,4 +287,3 @@ socket.onmessage = (e) => {
 //     res.send()
 // })
 // app.listen(6544)
->>>>>>> 803735a5987ef88dd83d309f5a32d27e846e9088
